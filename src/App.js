@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
+import Home from './Pages/Home'
+import Signup from './Pages/Signup'
+import Login from './Pages/Login'
+import NavBar from './Components/NavBar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Router>
+        {/* putting navbar here allows navbar to appear on all pages  */}
+      <NavBar/> 
+      <Switch>
+
+    <Route path='/' exact> 
+    <Home />
+      </Route>
+      <Route path='/login' exact> 
+    <Login />
+      </Route>
+      <Route path='/signup' exact> 
+    <Signup/>
+      </Route>
+   </Switch>
+
+      </Router>
     </div>
   );
 }
