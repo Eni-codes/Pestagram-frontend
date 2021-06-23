@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Post} from '../Components/Post'
 import Sidenav from '../Components/Sidenav'
 // import {Redirect} from "react-router-dom"
-const API = " http://localhost:3000/posts"
+
 class Profile extends Component {
  
   

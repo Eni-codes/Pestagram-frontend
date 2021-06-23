@@ -32,7 +32,8 @@ export default class  Home extends Component{
         <Switch>
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Signup' component={Signup}/> 
-          <Route exact path='/Profile' component={Profile}/> 
+          <Route exact path='/Profile' render={() => <Profile 
+                                                      posts={this.state.post}/>}/> 
         </Switch>
         {/* {this.state.loggedIn? <Profile posts = {this.state.posts}/> : null} */}
       </div>

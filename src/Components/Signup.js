@@ -6,12 +6,6 @@ import {Form , Button, Col} from 'react-bootstrap'
  
  //login submit handler and call login(details) function
  
-   state ={
-     firstName: "",
-     lastName: "",
-     userName: "",
-     password:""
-   }
    
 submitHandler = (e) => {
     e.preventDefault()
@@ -20,7 +14,12 @@ submitHandler = (e) => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(this.state.value)
+      body: JSON.stringify({
+        firstName: e.target[0].value,
+        lastName: e.target[1].value,
+        userName: e.target[2].value,
+        password: e.target[3].value
+      })
     })
     .then(res => res.json())
     .then(userInfo => localStorage.token = userInfo.token)
@@ -35,34 +34,22 @@ submitHandler = (e) => {
               <Form onSubmit={ this.submitHandler}>
                 <Form.Row>
                   <Col>
-                    <Form.Control placeholder="First name" 
-                    value={this.state.firstName}
-                    onChange={(e)=>this.setState({firstName:e.target.value})}
-                    />
+                    <Form.Control placeholder="First name" />
                   </Col>
                   <Col>
-                    <Form.Control placeholder="Last name"
-                    value={this.state.lastName}
-                    onChange={(e)=>this.setState({lastName:e.target.value})}
-                    />
+                    <Form.Control placeholder="Last name"/>
                   </Col>
                 </Form.Row>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>User Name</Form.Label>
-                  <Form.Control type="text" placeholder="User Name"
-                  value={this.state.userName}
-                  onChange={(e)=> this.setState({userName: e.target.value})}
-                  />
+                  <Form.Control type="text" placeholder="User Name"/>
                   <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
                   </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" placeholder="Password"
-                  value={this.state.password}
-                  onChange={(e)=>this.setState({password:e.target.value})}
-                  />
+                  <Form.Control type="password" placeholder="Password"/>
                 </Form.Group>
                 <Form.Group controlId="formBasicCheckbox">
                 </Form.Group>
