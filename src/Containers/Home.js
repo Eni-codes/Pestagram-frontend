@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react'
 import { Route, Switch} from 'react-router-dom'
 import Signup from '../Components/Signup'
 import Login from '../Components/Login'
@@ -6,25 +6,19 @@ import NavBar from '../Components/NavBar'
 import Profile from '../Containers/Profile'
 
 
-
-export const Home =() =>{
+const API = " http://localhost:3000/posts"
+class Home extends Component {
     //data replacement
    
 
-  // componentDidMount(){
-  //   fetch("http://localhost:3000/users")
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // }
-  //initial state of user
- 
+    state={
+      post: []
+      
+     
+  }
   
-  //function that calls Login
- 
-  //function that calls signup
- 
 
-    
+    render(){
   
 
     return(
@@ -36,11 +30,12 @@ export const Home =() =>{
           <Route exact path='/Signup' component={Signup}/> 
           <Route exact path='/Profile' component={Profile}/> 
         </Switch>
+        {/* {this.state.loggedIn? <Profile posts = {this.state.posts}/> : null} */}
       </div>
     )
-  
+    }
 }
 
-
+export default Home
 
 

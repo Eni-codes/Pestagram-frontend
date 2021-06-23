@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Post() {
+export const Post= (props) => {
   const classes = useStyles();
   
   return (
@@ -45,17 +45,17 @@ export default function Post() {
             R
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.posts.pet}
+        subheader={props.posts.caption}
         />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
+        image={props.posts.photos}
+        title={props.posts.caption}
         />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Caption
+          {props.posts.comment}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

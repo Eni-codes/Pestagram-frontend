@@ -1,19 +1,12 @@
 import React, {Component} from 'react' 
-import Post from '../Components/Post'
+import {Post} from '../Components/Post'
 import Sidenav from '../Components/Sidenav'
 // import {Redirect} from "react-router-dom"
-
-function Profile ({authorized}) {
-
-    // componentDidMount() {
-    //     fetch("https://localhost:3000/users")
-    //     .then(res => res.json())
-    //     .then(data => console.log(data))
-    // }
-    //  if (!authorized){
-    //      return <Redirect to="/login" />
-    //  }
-    
+const API = " http://localhost:3000/posts"
+class Profile extends Component {
+ 
+  
+    render(){
 
         return(
             <div>
@@ -22,10 +15,10 @@ function Profile ({authorized}) {
 
                 </div>
                 <Sidenav />
-                <Post/>
+                {this.props.posts.map((post) => <Post key={post.id} posts={post}/>)}
                 
             </div>
         )
-    
+        }
 }
 export default Profile
