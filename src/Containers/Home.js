@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import { Route, Switch} from 'react-router-dom'
 import Signup from '../Components/Signup'
 import Login from '../Components/Login'
@@ -6,20 +6,24 @@ import NavBar from '../Components/NavBar'
 import Profile from '../Containers/Profile'
 
 
-const API = " http://localhost:3000/posts"
-class Home extends Component {
-    //data replacement
-   
 
-    state={
-      post: []
-      
-     
+export default class  Home extends Component{
+
+  state = {
+    post:[]
   }
-  
 
-    render(){
-  
+  componentDidMount(){
+    fetch("http://localhost:3000/posts", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(posts => this.setState({post:posts}))
+  }
+  render(){
 
     return(
 
@@ -33,9 +37,23 @@ class Home extends Component {
         {/* {this.state.loggedIn? <Profile posts = {this.state.posts}/> : null} */}
       </div>
     )
-    }
+  }
+  
 }
 
-export default Home
+// useEffect(() => {
+//   fetch("http://localhost:3000/posts", {
+//     method: "GET",
+//     headers: {
+//       Authorization: `Bearer ${localStorage.token}`
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(posts => {
+//     setPosts(posts)
+//   })
+// }, [])
+
+
 
 
