@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {Component} from 'react'
 import { Route, Switch} from 'react-router-dom'
 import Signup from '../Components/Signup'
 import Login from '../Components/Login'
@@ -7,25 +7,23 @@ import Profile from '../Containers/Profile'
 
 
 
-export const Home =() =>{
-    //data replacement
-   
+export default class  Home extends Component{
 
-  // componentDidMount(){
-  //   fetch("http://localhost:3000/users")
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // }
-  //initial state of user
- 
-  
-  //function that calls Login
- 
-  //function that calls signup
- 
+  state = {
+    post:[]
+  }
 
-    
-  
+  componentDidMount(){
+    fetch("http://localhost:3000/posts", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(posts => this.setState({post:posts}))
+  }
+  render(){
 
     return(
 
@@ -38,8 +36,22 @@ export const Home =() =>{
         </Switch>
       </div>
     )
+  }
   
 }
+
+// useEffect(() => {
+//   fetch("http://localhost:3000/posts", {
+//     method: "GET",
+//     headers: {
+//       Authorization: `Bearer ${localStorage.token}`
+//     }
+//   })
+//   .then(res => res.json())
+//   .then(posts => {
+//     setPosts(posts)
+//   })
+// }, [])
 
 
 

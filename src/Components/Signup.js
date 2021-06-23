@@ -7,15 +7,24 @@ import {Form , Button, Col} from 'react-bootstrap'
  //login submit handler and call login(details) function
  
    state ={
-     firstname: "",
-     lastname: "",
-     email:"",
+     firstName: "",
+     lastName: "",
+     userName: "",
      password:""
    }
    
 submitHandler = (e) => {
-    e.preventDefault();
-   
+    e.preventDefault()
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state.value)
+    })
+    .then(res => res.json())
+    .then(userInfo => localStorage.token = userInfo.token)
+
   }
 
     render () {
@@ -27,22 +36,22 @@ submitHandler = (e) => {
                 <Form.Row>
                   <Col>
                     <Form.Control placeholder="First name" 
-                    value={this.state.firstname}
-                    onChange={(e)=>this.setState({firstname:e.target.value})}
+                    value={this.state.firstName}
+                    onChange={(e)=>this.setState({firstName:e.target.value})}
                     />
                   </Col>
                   <Col>
                     <Form.Control placeholder="Last name"
-                    value={this.state.lastname}
-                    onChange={(e)=>this.setState({lastname:e.target.value})}
+                    value={this.state.lastName}
+                    onChange={(e)=>this.setState({lastName:e.target.value})}
                     />
                   </Col>
                 </Form.Row>
                 <Form.Group controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={(e)=>this.setState({email:e.target.value})}
+                  <Form.Label>User Name</Form.Label>
+                  <Form.Control type="text" placeholder="User Name"
+                  value={this.state.userName}
+                  onChange={(e)=> this.setState({userName: e.target.value})}
                   />
                   <Form.Text className="text-muted">
                   We'll never share your email with anyone else.
