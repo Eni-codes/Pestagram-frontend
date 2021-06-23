@@ -15,6 +15,24 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+  .Signup {
+    padding: 60px 0;
+  }
+
+  .Signup form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
 
 .App-header {
   background-color: #282c34;
