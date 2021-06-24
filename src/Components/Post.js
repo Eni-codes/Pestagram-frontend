@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export const Post= (props) => {
  
   const classes = useStyles();
- const{pet,comment,photo,likes,caption} = props.posts
+ const{pet,comment,likes,caption} = props.posts
 
   return (
    
@@ -54,7 +54,7 @@ export const Post= (props) => {
       <CardMedia
         className={classes.media}
 
-        image={photo}
+        // image={}
         title={caption}
         />
       <CardContent>

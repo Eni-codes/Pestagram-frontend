@@ -8,23 +8,14 @@ function Profile (props) {
  
 
         return(
-            <div id="container">
-                 <div id="a">
+            <div>
+                 <div >
                     <h3>Welcome to your profile page</h3>
                 </div>
-                <div id="b">
+                <div>
+                {props.posts.map((post) => <Post key={post.id} posts = {post}/>)}
                 <Sidenav />
                 </div>
-                <Grid>
-                {props.posts.map((post) => <Post key={post.id} posts = {post}/>)}
-
-                {/* // pet ={ post.pet}
-                //  photo ={post.photos}
-                //  likes ={post.likes}
-                //  comment ={post.comments}
-                //  caption ={post.caption} */}
-                {/*  */}
-                </Grid>
             </div>
         )
         
