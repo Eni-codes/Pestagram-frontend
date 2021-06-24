@@ -5,18 +5,16 @@ import {Grid} from "@material-ui/core"
 // import {Redirect} from "react-router-dom"
 
 function Profile (props) {
+
+    console.log(props)
  
 
         return(
             <div id="container">
-                 <div id="a">
-                    <h3>Welcome to your profile page</h3>
-                </div>
-                <div id="b">
+                <h3>Welcome to your profile page</h3>
                 <Sidenav />
-                </div>
-                <Grid>
-                {props.posts.map((post) => <Post key={post.id} posts = {post}/>)}
+                {/* <Grid> */}
+                {props.posts.map((post) => <Post key={post.id} posts={post}/>)}
 
                 {/* // pet ={ post.pet}
                 //  photo ={post.photos}
@@ -24,7 +22,7 @@ function Profile (props) {
                 //  comment ={post.comments}
                 //  caption ={post.caption} */}
                 {/*  */}
-                </Grid>
+                {/* </Grid> */}
             </div>
         )
         
