@@ -35,11 +35,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Post= (props) => {
-
-  console.log(props)
+ 
   const classes = useStyles();
-  
+ const{pet,comment,photo,likes,caption} = props.posts
+
   return (
+   
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -47,21 +48,22 @@ export const Post= (props) => {
             R
           </Avatar>
         }
-        title={props.posts.pet}
-        subheader={props.posts.caption}
+        title={pet}
+        subheader={caption}
         />
       <CardMedia
         className={classes.media}
-        image={props.posts.photos}
-        title={props.posts.caption}
+
+        image={photo}
+        title={caption}
         />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {props.posts.comment}
+          {comment}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label={likes}>
           <FavoriteIcon />
         </IconButton>
       </CardActions>

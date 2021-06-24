@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 1000px;
+    
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/977/841/264/pitbull-pack-1080p-hd-wallpaper-preview.jpg)
+}
+.newform {
+    align-items: center;    
+    text-align:center;
+    display:flex;
+    margin-top: 100px;
+    margin-bottom: auto;
+    margin-left: 50px;
+    color:red;
+    font-family: Satisfy;
+  }

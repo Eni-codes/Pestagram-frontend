@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Route, Switch} from 'react-router-dom'
 import Signup from '../Components/Signup'
 import Login from '../Components/Login'
+import NewPost from '../Components/NewPost'
 import NavBar from '../Components/NavBar'
 import Profile from '../Containers/Profile'
 
@@ -24,12 +25,12 @@ export default class  Home extends Component{
     .then(posts => this.setState({post:posts}))
   }
   render(){
-
+   
     return(
 
       <div>
         <NavBar />
-        <Switch>
+        <Switch> 
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Signup' component={Signup}/> 
           <Route exact path='/Profile' render={() => <Profile posts={this.state.post}/>}/> 
