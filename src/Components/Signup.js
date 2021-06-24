@@ -21,7 +21,7 @@ import {Form , Button, Col} from 'react-bootstrap'
     .then(res => res.json())
     .then(userInfo => localStorage.token = userInfo.token)
 
-    this.props.history.push("/Profile")
+    this.props.history.push("/profile")
   }
 
     render () {
