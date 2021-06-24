@@ -4,10 +4,7 @@ import {Form , Button, Col} from 'react-bootstrap'
  class Signup extends Component {
 
  
- //login submit handler and call login(details) function
- 
-   
-submitHandler = (e) => {
+  submitHandler = (e) => {
     e.preventDefault()
     fetch("http://localhost:3000/users", {
       method: "POST",
@@ -24,6 +21,7 @@ submitHandler = (e) => {
     .then(res => res.json())
     .then(userInfo => localStorage.token = userInfo.token)
 
+    this.props.history.push("/Profile")
   }
 
     render () {

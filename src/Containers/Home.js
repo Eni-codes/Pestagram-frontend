@@ -32,28 +32,14 @@ export default class  Home extends Component{
         <Switch>
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Signup' component={Signup}/> 
-          <Route exact path='/Profile' render={() => <Profile 
-                                                      posts={this.state.post}/>}/> 
+          <Route exact path='/Profile' render={() => <Profile posts={this.state.post}/>}/> 
         </Switch>
-        {/* {this.state.loggedIn? <Profile posts = {this.state.posts}/> : null} */}
       </div>
     )
   }
   
 }
 
-// useEffect(() => {
-//   fetch("http://localhost:3000/posts", {
-//     method: "GET",
-//     headers: {
-//       Authorization: `Bearer ${localStorage.token}`
-//     }
-//   })
-//   .then(res => res.json())
-//   .then(posts => {
-//     setPosts(posts)
-//   })
-// }, [])
 
 
 

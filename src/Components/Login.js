@@ -3,14 +3,7 @@ import {Form , Button} from 'react-bootstrap'
 // import {useHistory} from 'react-router-dom'
 
 export default class Login extends Component{
-//  const history = useHistory();
- 
-//  state = {
-//      userName: "",
-//      password: ""
-//  }
 
-//login submit handler and call login(details) function
     submitHandler = e => {
         e.preventDefault();
         fetch("http://localhost:3000/login", {
@@ -25,6 +18,8 @@ export default class Login extends Component{
         })
         .then(res => res.json())
         .then(userInfo => localStorage.token = userInfo.token)
+
+        this.props.history.push("/Profile")
     }
 
   render() {
