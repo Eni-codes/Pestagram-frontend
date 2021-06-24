@@ -60,7 +60,6 @@ export const Post= (props) => {
   const likes = props.posts.likes
  
   const classes = useStyles();
- 
 
   return (
    
@@ -77,8 +76,10 @@ export const Post= (props) => {
       <CardMedia
         className={classes.media}
 
+
         //image={photo}
         title={null}
+
         />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
