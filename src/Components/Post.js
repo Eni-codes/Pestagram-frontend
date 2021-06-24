@@ -35,9 +35,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Post= (props) => {
+
+
+//   let update_likes = () => {
+
+//     fetch("http://localhost:3000/", {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ likes: likes + 1 })
+//     })
+//         .then(response => response.json())
+//         .then(console.log)
+
+// }
+ 
+  // console.log(props.posts)
+
+  const caption = props.posts.caption 
+  const pet = props.posts.pet 
+  const comment = props.posts.comments[0].content
+  // const photo = props.posts.photos[0].image
+  const likes = props.posts.likes
  
   const classes = useStyles();
- const{pet,comment,photo,likes,caption} = props.posts
+ 
 
   return (
    
@@ -54,8 +77,8 @@ export const Post= (props) => {
       <CardMedia
         className={classes.media}
 
-        image={photo}
-        title={caption}
+        //image={photo}
+        title={null}
         />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
@@ -63,7 +86,7 @@ export const Post= (props) => {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label={likes}>
+        <IconButton aria-label={likes}> 
           <FavoriteIcon />
         </IconButton>
       </CardActions>

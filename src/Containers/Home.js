@@ -24,12 +24,15 @@ export default class  Home extends Component{
     .then(res => res.json())
     .then(posts => this.setState({user_posts:posts}))
   }
+
+  
+
   render(){
    
     return(
 
       <div>
-        <NavBar />
+        <NavBar logout={this.log_out} />
         <Switch> 
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Signup' component={Signup}/> 

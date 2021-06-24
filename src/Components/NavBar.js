@@ -7,6 +7,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 export default function NavBar() {
   
+  let log_out = () => {
+    localStorage.clear()
+    this.props.history.push("/home")
+  }
+
   return (
     <div >
       
@@ -15,10 +20,11 @@ export default function NavBar() {
           <IconButton edge="start" color="inherit" aria-label="menu"className="icon-button" >
             <MenuIcon />
 
+            <Button color = "inherit" component ={Link} to="/"> Home </Button>
             <Button color = "inherit" component ={Link} to="/login"> Login </Button>
             <Button color = "inherit" component ={Link} to="/signup"> Signup </Button>
-            <Button color = "inherit" component ={Link} to="/"> Home </Button>
-            <Button color = "inherit" component ={Link} to="/profile"> Profile </Button>
+            <Button color = "inherit" component ={Link} to="/logout" onClick={log_out}> Log Out </Button>
+          
           </IconButton>
             <div>
               <IconButton
