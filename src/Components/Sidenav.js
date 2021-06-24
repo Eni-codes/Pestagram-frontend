@@ -13,6 +13,7 @@ export default class Sidenav extends Component {
                 <Link to="/Photos"><li><button>My Photos</button></li></Link>
                 <Link to="/Logout"><li><button>Log out</button></li></Link>
                 <Link to="/Posts"><li><button>All Posts</button></li></Link>
+                <Link to="/NewPost"><li><button>Create Post</button></li></Link>
             </ul>
         )
     }
