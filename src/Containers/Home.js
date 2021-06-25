@@ -12,7 +12,8 @@ import {Post} from '../Components/Post'
 export default class  Home extends Component{
 
   state = {
-    user_posts:[]
+    user_posts:[],
+    user_info:[],
   }
 
   componentDidMount(){
@@ -24,11 +25,34 @@ export default class  Home extends Component{
     })
     .then(res => res.json())
     .then(posts => this.setState({user_posts:posts}))
+
+    fetch("http://localhost:3000/user_info", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+    .then(res => res.json())
+    .then(info => this.setState({user_info:info}))
   }
 
   addPost = post => this.setState({
     user_posts: [...this.state.user_posts, post]
   })
+   updatePost = (updatedPost) => {
+    let updatedPostsArr = this.state.user_posts.map((post) => {
+      if(post.id === updatedPost.id){
+        return updatedPost
+      } else {
+        return post
+      }
+    })
+  
+    this.setState({user_posts: updatedPostsArr})
+  }
+
+
+
 
   render(){
    
@@ -42,7 +66,7 @@ export default class  Home extends Component{
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Post' component={Post}/>
           <Route exact path='/Signup' component={Signup}/> 
-          <Route exact path='/Profile' render={() => <Profile posts={this.state.user_posts}/>}/> 
+          <Route exact path='/Profile' render={() => <Profile posts={this.state.user_posts} user={this.state.user_info} updatePost={this.updatePost}/>}/> 
         </Switch>
       </div>
     )
