@@ -62,7 +62,8 @@ export const Post= (props) => {
   const classes = useStyles();
 
   return (
-   
+   <div>
+     <div>
     <Card className={classes.root}>
       <CardHeader
         avatar={
@@ -92,5 +93,7 @@ export const Post= (props) => {
         </IconButton>
       </CardActions>
     </Card>
+    </div>
+    </div>
   );
 }

@@ -1,28 +1,55 @@
 import React, { Component } from 'react'
+// import {useHistory} from 'react-router-dom'
 
-export default class RestaurantForm extends Component {
-    state ={
-        username:"",
-        pet:"", 
-        comment: "", 
+
+export default class NewPost extends Component {
+    constructor(){
+        super();
+        this.state= {pet:"", 
         photo: "",
         caption: "",
-        likes: 0,
+       
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit =  this.handleSubmit.bind(this);
+   
+    }
+    
+    
+    handleChange (event){
+       
+        this.setState({[event.target.name]: event.target.value});
+        console.log(event.target.value)
+    }
+   
+   
+   handleSubmit(event) {
+       console.log("form submit")
+      const {
+          pet,
+          photo,
+          caption
+      } = this.state;
+     
+    fetch('http://localhost:3000/user_posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          user:{
+           pet: pet,
+           photo: photo,
+           caption: caption
+          }
+        }),
+        headers:{'Content-Type':'application/json'}
+    }).then(res=>res.json())
+    .catch(error=>console.log('Error:',error))
+     .then((response => this.props.addPost(response)));
+     event.preventDefault()
+
+    //  this.props.history.push("/profile")
     }
 
 
-   sendNewPost =(e)=>{
-    e.preventDefault()
-  const reqObj = {
-      headers: {"Content-Type": "application/json"},
-      method:  "POST",
-      body: JSON.stringify({...this.state})
-  }
-  // debugger;
-  fetch("http://localhost:3000/posts", reqObj)
-  .then(res => res.json())
-  .then((newPostObj => this.props.addPost(newPostObj)))
-}
     render() {
         return (
             <>
@@ -31,26 +58,26 @@ export default class RestaurantForm extends Component {
             </div>
           <section className="newform">
             
-            <form onSubmit= {this.sendNewPost} addPost= {this.props.addPost} className="form-inline ml-4">
+            <form onSubmit= {this.handleSubmit} className="form-inline ml-4">
 
-              <input value = {this.state.pet} onChange={(e)=> this.setState({pet:e.target.value})}type="text" className="form-control mb-2 mr-sm-2" placeholder="pet"/>
-              <div className="input-group mb-2 mr-sm-2">
-                <input value = {this.state.username} onChange={(e)=> this.setState({username:e.target.value})}type="text" className="form-control mb-2 mr-sm-2" placeholder="UserName"/>
-                  </div>
+              <input type="text" name="pet" className="form-control mb-2 mr-sm-2" placeholder="pet" value={this.state.pet} onChange={this.handleChange}/>
+              {/* <div className="input-group mb-2 mr-sm-2">
+                <input  onChange={this.handleNameChange}type="text" className="form-control mb-2 mr-sm-2" placeholder="UserName"/>
+                  </div> */}
                 <div className="input-group mb-2 mr-sm-2">
-                    <input value = {this.state.photo}onChange={(e)=> this.setState({photo: e.target.value})} type="text" className="form-control" placeholder="photo URL"/>
+                    <input   type="text" name="photo" className="form-control" placeholder="photo URL" value={this.state.photo} onChange={this.handleChange} />
                 </div>
 
-                <div className="input-group mb-2 mr-sm-2">
+                {/* <div className="input-group mb-2 mr-sm-2">
                     <input value = {this.state.likes}onChange={(e)=> this.setState({likes: e.target.value})}type="number" className="form-control" placeholder="likes "/>
                 </div>
                 <div className="input-group mb-2 mr-sm-2">
                     <input value = {this.state.comment}onChange={(e)=> this.setState({comment: e.target.value})} comment="text" className="form-control" placeholder="comment"/>
-                </div>
+                </div> */}
 
 
                 <div className="input-group mb-2 mr-sm-2">
-                    <input value = {this.state.caption} onChange={(e)=> this.setState({caption: e.target.value})} type="text-area" className="form-control" placeholder="captions"/>
+                    <input   type="text-area" name="caption" className="form-control" placeholder="captions" value={this.state.caption}  onChange={this.handleChange}/>
                 </div>
 
                 
@@ -58,6 +85,7 @@ export default class RestaurantForm extends Component {
                 <button type="submit" className="btn btn-primary mb-2">Submit</button>
             </form>
             </section>
+           
             </>
         )
     }
