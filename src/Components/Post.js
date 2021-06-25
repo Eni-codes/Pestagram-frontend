@@ -3,15 +3,20 @@ import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
 export const Post= ({post,updatePost}) => {
+ 
+  
    
-   let {id, caption, pet, likes} = post
-  //  console.log(post.photo)
-    
+   let {id, caption, pet, likes, photos} = post
+  //  let image = post.photos[0].image
+  
  
   let handle_delete = (e) => {
 
     fetch(`http://localhost:3000/posts/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${localStorage.token}`
+            }
         })
             .then(res => res.json())
             .then(console.log)
@@ -22,7 +27,9 @@ export const Post= ({post,updatePost}) => {
     fetch(`http://localhost:3000/posts/${id}`, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.token}`
+            
         },
         body: JSON.stringify({ likes: likes + 1 })
     })
@@ -39,14 +46,14 @@ export const Post= ({post,updatePost}) => {
 
     <div>
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img variant="top" src={null} />
         <Card.Body>
           <Card.Title>{pet}</Card.Title>
           <Card.Text>
             {caption}
           </Card.Text>
           <Card.Text>
-            {likes}
+             Likes: {likes}
           </Card.Text>
           <Button variant="primary" onClick={update_likes}>Like</Button>
           <Button variant="primary" onClick={handle_delete}>Delete</Button>
