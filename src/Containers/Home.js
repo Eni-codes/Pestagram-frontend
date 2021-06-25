@@ -39,6 +39,7 @@ export default class  Home extends Component{
   addPost = post => this.setState({
     user_posts: [...this.state.user_posts, post]
   })
+
    updatePost = (updatedPost) => {
     let updatedPostsArr = this.state.user_posts.map((post) => {
       if(post.id === updatedPost.id){
@@ -49,6 +50,12 @@ export default class  Home extends Component{
     })
   
     this.setState({user_posts: updatedPostsArr})
+  }
+
+   deletePost = (postID) => {
+    let deletedPostArr = this.state.user_posts.filter(post => post.id !== postID)
+    this.setState({user_posts:deletedPostArr})
+    
   }
 
 
@@ -66,7 +73,7 @@ export default class  Home extends Component{
           <Route exact path='/Login' component={Login}/> 
           <Route exact path='/Post' component={Post}/>
           <Route exact path='/Signup' component={Signup}/> 
-          <Route exact path='/Profile' render={() => <Profile posts={this.state.user_posts} user={this.state.user_info} updatePost={this.updatePost}/>}/> 
+          <Route exact path='/Profile' render={() => <Profile posts={this.state.user_posts} user={this.state.user_info} updatePost={this.updatePost} deletePost={this.deletePost}/>}/> 
         </Switch>
       </div>
     )

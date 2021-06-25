@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-export const Post= ({post,updatePost}) => {
+export const Post= ({post,updatePost, deletePost}) => {
  
    let {id, caption, pet, likes, photos} = post
   //  let image = post.photos[0].image
@@ -19,7 +19,9 @@ export const Post= ({post,updatePost}) => {
             }
         })
             .then(res => res.json())
-            .then(console.log)
+            .then(() => {
+              deletePost(id)
+            })
   }
 
   let update_likes = (e) => {
