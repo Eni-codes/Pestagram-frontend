@@ -10,6 +10,7 @@ function Profile ({user, posts, updatePost}) {
     const {userName, photo, bio} = user
     const postCard = posts.map((post) => <Post post={post} key={post.id} updatePost={updatePost}/>)
     
+    
 
    
         return(
