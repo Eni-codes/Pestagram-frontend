@@ -4,10 +4,10 @@ import { Card, Button } from 'react-bootstrap';
 
 export const Post= ({post,updatePost}) => {
  
-  
-   
    let {id, caption, pet, likes, photos} = post
   //  let image = post.photos[0].image
+
+  console.log(post)
   
  
   let handle_delete = (e) => {
