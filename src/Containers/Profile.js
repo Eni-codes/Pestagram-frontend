@@ -14,7 +14,8 @@ function Profile ({user, posts, updatePost}) {
 
    
         return(
-            <div id="container">
+            <div id="container-card" classname="card">
+                <div className="left-half">
                 <h3>Welcome to your profile page</h3>
                 <Sidenav />
                 <Card style={{ width: '18rem' }}>
@@ -24,7 +25,10 @@ function Profile ({user, posts, updatePost}) {
                         <Card.Text>{bio}</Card.Text>
                     </Card.Body>
                 </Card>
+                </div>
+                <div class="right-half">
                 {postCard}
+                </div>
                 <Switch>
                     <Route  exact path='/posts' component={AllPosts}/> 
                 </Switch>

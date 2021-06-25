@@ -5,7 +5,7 @@ import Login from '../Components/Login'
 import NewPost from '../Components/NewPost'
 import NavBar from '../Components/NavBar'
 import Profile from '../Containers/Profile'
-import {Post} from '../Components/Post'
+
 
 
 
@@ -60,11 +60,15 @@ export default class  Home extends Component{
 
       <div>
         <NavBar logout={this.log_out} />
+
+        <div className="heading">
+          <h3>Welcome to Petstagram</h3>
+          <h1> A social network for pets</h1>
+        </div>
         <Switch> 
         
           <Route exact path='/NewPost' render={() => <NewPost addPost= {this.addPost}/>}/> 
           <Route exact path='/Login' component={Login}/> 
-          <Route exact path='/Post' component={Post}/>
           <Route exact path='/Signup' component={Signup}/> 
           <Route exact path='/Profile' render={() => <Profile posts={this.state.user_posts} user={this.state.user_info} updatePost={this.updatePost}/>}/> 
         </Switch>

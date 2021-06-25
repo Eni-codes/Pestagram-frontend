@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, CardColumns } from 'react-bootstrap';
 
 export const Post= ({post,updatePost}) => {
  
@@ -43,10 +43,12 @@ export const Post= ({post,updatePost}) => {
 
  
   return (
+  
 
-    <div>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={null} />
+    <div className="card">         
+      <CardColumns>
+      <Card style={{ width: '18rem' }} >
+        <Card.Img variant="top" src="code1.png" alt="Sample" />
         <Card.Body>
           <Card.Title>{pet}</Card.Title>
           <Card.Text>
@@ -55,12 +57,13 @@ export const Post= ({post,updatePost}) => {
           <Card.Text>
              Likes: {likes}
           </Card.Text>
-          <Button variant="primary" onClick={update_likes}>Like</Button>
+          <Button  variant="primary" onClick={update_likes}>Like</Button>
           <Button variant="primary" onClick={handle_delete}>Delete</Button>
         </Card.Body>
       </Card>
+      </CardColumns>
     </div>
-   
+     
     
   )
 }
