@@ -1,15 +1,16 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 import {AppBar, Toolbar, IconButton,  MenuItem, Menu, Button } from '@material-ui/core';
 import MenuIcon from "@material-ui/icons/Menu";
+
 
 
 
 export default function NavBar() {
   
   let log_out = () => {
-    localStorage.clear()
-    this.props.history.push("/home")
+    localStorage.clear();
+    <Redirect to='Home'/>
   }
 
   return (
