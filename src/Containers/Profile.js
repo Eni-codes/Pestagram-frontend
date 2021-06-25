@@ -5,10 +5,10 @@ import {Card} from 'react-bootstrap'
 import { Route, Switch} from 'react-router-dom'
 import AllPosts from '../Components/AllPosts'
 
-function Profile ({user, posts, updatePost}) {
+function Profile ({user, posts, updatePost, deletePost}) {
 
     const {userName, photo, bio} = user
-    const postCard = posts.map((post) => <Post post={post} key={post.id} updatePost={updatePost}/>)
+    const postCard = posts.map((post) => <Post post={post} key={post.id} updatePost={updatePost} deletePost={deletePost} />)
     
     
 
