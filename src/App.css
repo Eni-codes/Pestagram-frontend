@@ -101,13 +101,13 @@ Button{
   color: burlywood ;
 }
 
-.left-half{
+/* .left-half{
   
   grid-column: 1;
 }
 .right-half{
   grid-column: 2;
-}
+} */
 
 .cards {
   width: 90%;
@@ -131,7 +131,7 @@ h1{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-weight: bold;
   font-size: 15px;
-  color: blue ;
+  color: burlywood ;
   }
 
 /* .card {
