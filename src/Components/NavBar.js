@@ -49,7 +49,7 @@ export default function NavBar() {
                 }}
               >
                 <MenuItem >Profile</MenuItem>
-                <MenuItem >My account</MenuItem>
+                <MenuItem >My account sign in</MenuItem>
               </Menu>
             </div>
         </Toolbar>
